@@ -1,0 +1,156 @@
+[
+  {
+    "_id": "ELB-Backend-Latency-Average",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Backend Latency Average",
+      "visState": "{\"title\":\"ELB Backend Latency Average\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"overlap\",\"times\":[],\"addTimeMarker\":true,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"elb_backend_processing_time\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"elb_name.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Backend-Response-Codes",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Backend Response Codes",
+      "visState": "{\"title\":\"ELB Backend Response Codes\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"elb_backend_status_code\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"elb_name.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Hits-By-Client-IP",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Hits By Client IP",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"table\",\"params\":{\"perPage\":20,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"elb_client_ip.keyword\",\"size\":20,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Client IP\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"elb_name.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"ELB Name\"}},{\"id\":\"4\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"geoip.country_name.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Location\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Geo-Foreign-Requests",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Geo Requests",
+      "visState": "{\"title\":\"ELB Geo Foreign Requests\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"geoip.country_name.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Geo-Location-Map",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Geo Location Map",
+      "visState": "{\"title\":\"ELB Geo Location Map\",\"type\":\"tile_map\",\"params\":{\"mapType\":\"Heatmap\",\"isDesaturated\":true,\"addTooltip\":false,\"heatMaxZoom\":\"5\",\"heatMinOpacity\":\"0.9\",\"heatRadius\":\"10\",\"heatBlur\":\"10\",\"heatNormalizeData\":true,\"wms\":{\"enabled\":true,\"url\":\"http://ows.mundialis.de/services/service?\",\"options\":{\"version\":\"1.1.1\",\"layers\":\"TOPO-OSM-WMS\",\"format\":\"image/jpeg\",\"transparent\":true,\"attribution\":\"\",\"styles\":\"\"}}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"geohash_grid\",\"schema\":\"segment\",\"params\":{\"field\":\"geoip.location\",\"autoPrecision\":false,\"mapZoom\":2,\"mapCenter\":[39.36827914916014,-82.177734375],\"precision\":3}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Hits-By-URL",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Hits By URL",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"table\",\"params\":{\"perPage\":20,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"elb_http_path_site.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Domain\"}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"elb_http_path_url.keyword\",\"size\":20,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"URL\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-HTTP-Protocol-PIE",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB HTTP Protocol PIE",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"elb_http_path_protocol.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Request-Count-Per-ELB",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Request Count Per ELB",
+      "visState": "{\"title\":\"ELB Request Count Per ELB\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":true,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"elb_name.keyword\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Ports-By-Volume",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Ports By Volume",
+      "visState": "{\"title\":\"ELB Ports By Volume\",\"type\":\"histogram\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"scale\":\"linear\",\"mode\":\"stacked\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"elb_http_path_port\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Request-Count-Total",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Request Count Total",
+      "visState": "{\"title\":\"New Visualization\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":20},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"field\":\"elb_name.keyword\",\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\"query\":{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "ELB-Hits-By-Client-IP-User-Agent",
+    "_type": "visualization",
+    "_source": {
+      "title": "ELB Hits By Client IP/User-Agent",
+      "visState": "{\n  \"title\": \"New Visualization\",\n  \"type\": \"table\",\n  \"params\": {\n    \"perPage\": 20,\n    \"showPartialRows\": false,\n    \"showMeticsAtAllLevels\": false\n  },\n  \"aggs\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"count\",\n      \"schema\": \"metric\",\n      \"params\": {}\n    },\n    {\n      \"id\": \"2\",\n      \"type\": \"terms\",\n      \"schema\": \"bucket\",\n      \"params\": {\n        \"field\": \"elb_client_ip.keyword\",\n        \"size\": 20,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\",\n        \"customLabel\": \"Client IP\"\n      }\n    },\n    {\n      \"id\": \"3\",\n      \"type\": \"terms\",\n      \"schema\": \"bucket\",\n      \"params\": {\n        \"field\": \"elb_name.keyword\",\n        \"size\": 5,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\",\n        \"customLabel\": \"ELB Name\"\n      }\n    },\n    {\n      \"id\": \"4\",\n      \"type\": \"terms\",\n      \"schema\": \"bucket\",\n      \"params\": {\n        \"field\": \"elb_userAgent.keyword\",\n        \"size\": 10,\n        \"order\": \"desc\",\n        \"orderBy\": \"1\",\n        \"customLabel\": \"ELB User Agent\"\n      }\n    }\n  ],\n  \"listeners\": {}\n}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\n  \"index\": \"48b0daa0-11db-11e8-ab22-c3423e2a99c4\",\n  \"query\": {\n    \"query\": {\n      \"query_string\": {\n        \"query\": \"*\",\n        \"analyze_wildcard\": true\n      }\n    },\n    \"language\": \"lucene\"\n  },\n  \"filter\": []\n}"
+      }
+    }
+  }
+]
