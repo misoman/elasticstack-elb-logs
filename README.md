@@ -42,7 +42,9 @@ xpack.monitoring.elasticsearch.url: http://localhost:9200
   - secret_access_key
   - bucket,region
   - prefix: check it in S3 bucket for exact path name
-  - hosts: change it to localhost or ip/name of elasticsearch in output part
+  - edit output part
+    - change hosts to localhost or ip/name of elasticsearch
+    - change password
 - copy the config file to `/etc/logstash/conf.d/` before Logstash start.
 
 
@@ -67,6 +69,8 @@ sudo docker build -t logstash-s3:6.2.1 .
   - secret_access_key
   - bucket,region
   - prefix: check it in S3 bucket for exact path name
+  - edit output part
+    - change password
 - Change user permission for data folder
 ```
 sudo chown -R 1000:1000 data
