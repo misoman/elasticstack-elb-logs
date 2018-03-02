@@ -60,7 +60,7 @@ sudo docker build -t logstash-s3:6.2.1 .
 
 ## Setup Kibana dashboard
 Access to Kibana on port 5601 with `elastic / password`. Make index `logstash-*` but choose timestamp `timestamp` without @.
-Got to Management -> to Kibana -> Saved Objects and import all 3 .json files from `kibana-dashboard` folder. Open `Load Balancing Dashboard` in Dashboard.
+Got to Management -> Kibana -> Saved Objects and import all 3 .json files from `kibana-dashboard` folder. Open `Load Balancing Dashboard` in Dashboard.
 
 ## Delete old Indices
 Delete on machine/container where is elasticsearch service. 
