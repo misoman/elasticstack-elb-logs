@@ -56,6 +56,11 @@ sudo docker build -t logstash-s3:6.2.1 .
 ```
 - Edit `.env` with your own password.
 - Edit `config/logstash/logstash.conf` with your AWS S3 parameters.
+- Change user permission for data folder
+```
+sudo chown -R 1000:1000 data
+
+```
 - `docker-compose up -d`
 
 ## Setup Kibana dashboard
