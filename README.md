@@ -63,6 +63,10 @@ sudo docker build -t logstash-s3:6.2.1 .
 ```
 - Edit `.env` with your own password.
 - Edit `config/logstash/logstash.conf` with your AWS S3 parameters.
+  - access_key_id
+  - secret_access_key
+  - bucket,region
+  - prefix: check it in S3 bucket for exact path name
 - Change user permission for data folder
 ```
 sudo chown -R 1000:1000 data
@@ -72,7 +76,7 @@ sudo chown -R 1000:1000 data
 
 ## Setup Kibana dashboard
 Access to Kibana on port 5601 with `elastic / password`. Make index `logstash-*` but choose timestamp `timestamp` without @.
-Got to Management -> Kibana -> Saved Objects and import all 3 .json files from `kibana-dashboard` folder. Open `Load Balancing Dashboard` in Dashboard.
+Go to Management -> Kibana -> Saved Objects and import all 3 .json files from `kibana-dashboard` folder. Open `Load Balancing Dashboard` in Dashboard.
 
 ## Delete old Indices
 Delete on machine/container where is elasticsearch service. 
