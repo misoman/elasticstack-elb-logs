@@ -36,7 +36,7 @@ xpack.monitoring.elasticsearch.username: logstash_system
 xpack.monitoring.elasticsearch.password: logstash_systempassword
 xpack.monitoring.elasticsearch.url: http://localhost:9200
 ```
-Edit `config/logstash/logstash.conf` with your AWS S3 parameters and copy to `/etc/logstash/conf.d/` before Logstash start.
+Edit `config/logstash/logstash.conf` with your AWS S3 parameters.(access_key_id,secret_access_key,bucket,region,prefix - check it in S3 bucket,hosts - in output part change it to localhost or ip/name of elasticsearch) Copy the config file to `/etc/logstash/conf.d/` before Logstash start.
 
 
 ## Installation as Docker container
